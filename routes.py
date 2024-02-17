@@ -60,7 +60,7 @@ def login():
             user = User.query.filter_by(email=form.email.data).first()
             if check_password_hash(user.pwd, form.pwd.data):
                 login_user(user)
-                return redirect(url_for('index'))
+                return render_template("404.html",title="404")#redirect(url_for('404.html'))
             else:
                 flash("Invalid Username or password!", "danger")
         except Exception as e:
