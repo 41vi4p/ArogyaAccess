@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<head> 
+    {% block head %}
+    <title>{% block title %}{% endblock %} - DP Enterprise</title>
+    {% endblock %}
+    <style>
+        body {
+            background-color: #bab6c7;
+        }
+      </style>
+</head>
+
+<body>
+
+    <div id="logo">
+        <img src="https://th.bing.com/th/id/OIG.FUpkFxa2KZB_erkwSkLT?pid=ImgGn" alt="DP Enterprise Ltd." height="150px">
+    </div>
+
+
+    <h1>DP Enterprise Ltd.</h1>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+<footer>
+    {% block footer %}
+    &copy; Copyright 2023 by DP Enterprise Ltd.
+    {% endblock %}
+</footer>
+
+</body>
+
+</html>
