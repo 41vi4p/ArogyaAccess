@@ -33,6 +33,7 @@ from app import create_app,db,login_manager,bcrypt
 from models import User
 from forms import login_form,register_form
 
+app = Flask(__name__, template_folder="templates")
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -65,7 +66,7 @@ def login():
         except Exception as e:
             flash(e, "danger")
 
-    return render_template("auth.html",
+    return render_template("login.html",
         form=form,
         text="Login",
         title="Login",
