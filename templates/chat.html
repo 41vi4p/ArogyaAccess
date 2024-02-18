@@ -11,12 +11,12 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <link rel="shortcut icon" href="../files/images/favicon.png" type="">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="">
 
-  <title> Login </title>
+  <title> Arogya Access </title>
 
   <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="../styles/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/bootstrap.css') }}" />
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -25,13 +25,14 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
   <!-- font awesome style -->
-  <link href="../styles/font-awesome.min.css" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='styles/font-awesome.min.css') }}" rel="stylesheet" />
 
   <!-- Custom styles for this template -->
-  <link href="../styles/style.css" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" />
   <!-- responsive style -->
-  <link href="../styles/responsive.css" rel="stylesheet" />
-  <link href="../styles/chat.css" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='styles/responsive.css') }}" rel="stylesheet" />
+
+  <link href="{{ url_for('static', filename='styles/chat.css') }}" rel="stylesheet" />
 </head>
 
 <body class="sub_page">
