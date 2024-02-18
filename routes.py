@@ -121,6 +121,20 @@ def register():
         btn_action="Register account"
         )
 
+@app.route("/firstaid")
+def firstaid():
+    return render_template("firstaid.html",title="firstaid")
+
+@app.route("/chatbot")
+@login_required
+def chatbot():
+    return render_template("chatbot.html",title="chatbot")
+
+@app.route("/about")
+def about():
+    return render_template("about.html",title="about")
+
+
 @app.route("/logout")
 @login_required
 def logout():
