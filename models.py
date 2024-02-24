@@ -1,6 +1,7 @@
 from app import db
 import flask_login
-from google.cloud import firestore
+
+
 
 # class User(db.Document):
 #     __collection_name__ = "user"

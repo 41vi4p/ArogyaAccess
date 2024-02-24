@@ -28,13 +28,23 @@ from app import create_app,db,login_manager,bcrypt
 from models import User
 from forms import login_form,register_form
 
+import set
+import pyrebase
+
+
 app = Flask(__name__, template_folder="templates")
 
-
+firebase = pyrebase.initialize_app(set.config)
+auth = firebase.auth()
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    user_ref = db.reference(f'/users/{user_id}')
+    user_data = user_ref.get()
+    if user_data:
+        return User(user_data) # assuming you have a User class that takes a dictionary as input
+    else:
+        return None
 
 app = create_app()
 
@@ -53,14 +63,20 @@ def login():
     form = login_form()
 
     if form.validate_on_submit():
+        email = form.email.data
+        pwd = form.pwd.data
         try:
-            user = User.query.filter_by(email=form.email.data).first()
-            if check_password_hash(user.password, form.pwd.data):
-                login_user(user)
-                return render_template("chat.html",title="404")#redirect(url_for('404.html'))
-            else:
-                flash("Invalid Username or password!", "danger")
-        except Exception as e:
+            auth.sign_in_with_email_and_password(email,pwd)
+            user = auth.sign_in_with_email_and_password(email, pwd)
+            account_info = auth.get_account_info(user['idToken'])
+            # if account_info['users'][0]['emailVerified'] == False:
+            #     flash("Please Verify Your Email!", "danger")
+            # else:
+            return render_template("chat.html",title="404")#redirect(url_for('404.html'))
+        # except:
+        #     flash("Invalid Username or password!", "danger")
+        
+        except FirebaseError as e:
             flash(e, "danger")
 
     return render_template("login.html",
@@ -83,14 +99,17 @@ def register():
             email = form.email.data
             pwd = form.pwd.data
             username = form.username.data
+            newuser = auth.create_user_with_email_and_password(email, pwd)
+            #auth.send_email_verification(newuser['idToken'])
             
-            newuser = User(
-                username=username,
-                email=email,
-                password=bcrypt.generate_password_hash(pwd),
-            )
+            
+            # newuser = User(
+            #     username=username,
+            #     email=email,
+            #     password=bcrypt.generate_password_hash(pwd),
+            # )
     
-            db.collection('users').document(username).set(newuser)
+           # db.collection('users').document(username).set(newuser)
             flash(f"Account Succesfully created", "success")
             return redirect(url_for("login"))
         
@@ -148,3 +167,4 @@ def logout():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
