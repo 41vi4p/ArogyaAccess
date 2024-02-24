@@ -87,3 +87,29 @@ form {
       width: 100%;
     }
   }
+
+  .dash-comp{
+    display: grid;
+    flex-direction: row;
+    row-gap: 10px;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  .dash-card{
+    background-color: #f9f6ee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    height: 50vh;
+    width: 200vh;
+    border: 3px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .dash-comp :hover{
+    background-color: #fffff0;
+  }
