@@ -69,15 +69,15 @@ def login():
             auth.sign_in_with_email_and_password(email,pwd)
             user = auth.sign_in_with_email_and_password(email, pwd)
             account_info = auth.get_account_info(user['idToken'])
-            # if account_info['users'][0]['emailVerified'] == False:
-            #     flash("Please Verify Your Email!", "danger")
-            # else:
-            return render_template("chat.html",title="404")#redirect(url_for('404.html'))
-        # except:
-        #     flash("Invalid Username or password!", "danger")
+            if account_info['users'][0]['emailVerified'] == False:
+                flash("Please Verify Your Email!", "danger")
+            else:
+                return render_template("chat.html",title="404")#redirect(url_for('404.html'))
+        except:
+            flash("Invalid Username or password!", "danger")
         
-        except FirebaseError as e:
-            flash(e, "danger")
+        # except FirebaseError as e:
+        #     flash(e, "danger")
 
     return render_template("login.html",
         form=form,
@@ -100,17 +100,9 @@ def register():
             pwd = form.pwd.data
             username = form.username.data
             newuser = auth.create_user_with_email_and_password(email, pwd)
-            #auth.send_email_verification(newuser['idToken'])
+            auth.send_email_verification(newuser['idToken'])
             
-            
-            # newuser = User(
-            #     username=username,
-            #     email=email,
-            #     password=bcrypt.generate_password_hash(pwd),
-            # )
-    
-           # db.collection('users').document(username).set(newuser)
-            flash(f"Account Succesfully created", "success")
+            flash(f"Account Succesfully created\nCheck your Email & Verify Your Account.", "success")
             return redirect(url_for("login"))
         
         except FirebaseError as e:
