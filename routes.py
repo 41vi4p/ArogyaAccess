@@ -60,7 +60,7 @@ def login():
             user = User.query.filter_by(email=form.email.data).first()
             if check_password_hash(user.pwd, form.pwd.data):
                 login_user(user)
-                return render_template("404.html",title="404")#redirect(url_for('404.html'))
+                return render_template("chat.html",title="404")#redirect(url_for('404.html'))
             else:
                 flash("Invalid Username or password!", "danger")
         except Exception as e:
@@ -120,6 +120,20 @@ def register():
         title="Register",
         btn_action="Register account"
         )
+
+@app.route("/firstaid")
+def firstaid():
+    return render_template("firstaid.html",title="firstaid")
+
+@app.route("/chatbot")
+@login_required
+def chatbot():
+    return render_template("chatbot.html",title="chatbot")
+
+@app.route("/about")
+def about():
+    return render_template("about.html",title="about")
+
 
 @app.route("/logout")
 @login_required
