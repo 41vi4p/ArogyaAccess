@@ -1,8 +1,5 @@
 /__pycache__
 *.db
 *venv
-<<<<<<< HEAD
 #.vercel
-=======
-*.log
->>>>>>> d896f600c5cc1535f088537b328ae498ec594db1
+*key.json

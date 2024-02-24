@@ -8,13 +8,8 @@ from flask import (
 )
 
 from datetime import timedelta
-from sqlalchemy.exc import (
-    IntegrityError,
-    DataError,
-    DatabaseError,
-    InterfaceError,
-    InvalidRequestError,
-)
+
+from firebase_admin.exceptions import FirebaseError
 from werkzeug.routing import BuildError
 
 
@@ -34,6 +29,8 @@ from models import User
 from forms import login_form,register_form
 
 app = Flask(__name__, template_folder="templates")
+
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -58,7 +55,7 @@ def login():
     if form.validate_on_submit():
         try:
             user = User.query.filter_by(email=form.email.data).first()
-            if check_password_hash(user.pwd, form.pwd.data):
+            if check_password_hash(user.password, form.pwd.data):
                 login_user(user)
                 return render_template("chat.html",title="404")#redirect(url_for('404.html'))
             else:
@@ -75,6 +72,8 @@ def login():
 
 
 
+
+
 # Register route
 @app.route("/register/", methods=("GET", "POST"), strict_slashes=False)
 def register():
@@ -88,31 +87,34 @@ def register():
             newuser = User(
                 username=username,
                 email=email,
-                pwd=bcrypt.generate_password_hash(pwd),
+                password=bcrypt.generate_password_hash(pwd),
             )
     
-            db.session.add(newuser)
-            db.session.commit()
+            db.collection('users').document(username).set(newuser)
             flash(f"Account Succesfully created", "success")
             return redirect(url_for("login"))
-
-        except InvalidRequestError:
-            db.session.rollback()
+        
+        except FirebaseError as e:
+            db.collection('users').document(username).delete()
             flash(f"Something went wrong!", "danger")
-        except IntegrityError:
-            db.session.rollback()
-            flash(f"User already exists!.", "warning")
-        except DataError:
-            db.session.rollback()
-            flash(f"Invalid Entry", "warning")
-        except InterfaceError:
-            db.session.rollback()
-            flash(f"Error connecting to the database", "danger")
-        except DatabaseError:
-            db.session.rollback()
-            flash(f"Error connecting to the database", "danger")
+
+        # except InvalidRequestError:
+        #     db.collection('users').document(username).delete()
+        #     flash(f"Something went wrong!", "danger")
+        # except IntegrityError:
+        #     db.collection('users').document(username).delete()
+        #     flash(f"User already exists!.", "warning")
+        # except DataError:
+        #     db.collection('users').document(username).delete()
+        #     flash(f"Invalid Entry", "warning")
+        # except InterfaceError:
+        #     db.collection('users').document(username).delete()
+        #     flash(f"Error connecting to the database", "danger")
+        # except DatabaseError:
+        #     db.collection('users').document(username).delete()
+        #     flash(f"Error connecting to the database", "danger")
         except BuildError:
-            db.session.rollback()
+            db.collection('users').document(username).delete()
             flash(f"An error occured !", "danger")
     return render_template("auth.html",
         form=form,
@@ -120,6 +122,8 @@ def register():
         title="Register",
         btn_action="Register account"
         )
+
+
 
 @app.route("/firstaid")
 def firstaid():
