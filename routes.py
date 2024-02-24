@@ -72,7 +72,7 @@ def login():
             if account_info['users'][0]['emailVerified'] == False:
                 flash("Please Verify Your Email!", "danger")
             else:
-                return render_template("chat.html",title="404")#redirect(url_for('404.html'))
+                return render_template("dashboard.html",title="dashboard")#redirect(url_for('404.html'))
         except:
             flash("Invalid Username or password!", "danger")
         
@@ -144,6 +144,11 @@ def firstaid():
 @login_required
 def chatbot():
     return render_template("chatbot.html",title="chatbot")
+
+@app.route("/dashboard")
+@login_required
+def dashboard():
+    return render_template("dashboard.html",title="dashboard")
 
 @app.route("/about")
 def about():
