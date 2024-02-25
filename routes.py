@@ -155,6 +155,10 @@ def about():
     return render_template("about.html",title="about")
 
 
+@app.route("/chat")
+def chat():
+    return render_template("chat.html",title="chat")
+
 @app.route("/logout")
 @login_required
 def logout():
