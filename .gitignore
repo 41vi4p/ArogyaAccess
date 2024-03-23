@@ -1,8 +1,0 @@
-/__pycache__
-*.db
-*venv
-#.vercel
-*key.json
-*key2.json
-*set.py
-.vercel
