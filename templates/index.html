@@ -31,6 +31,7 @@
   <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" />
   <!-- responsive style -->
   <link href="{{ url_for('static', filename='styles/responsive.css') }}" rel="stylesheet" />
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </head>
 
@@ -49,6 +50,7 @@
           <a class="navbar-brand" href="index.html">
             <span>
               Arogya Access
+              <div id="google_translate_element"></div>
             </span>
           </a>
 
@@ -508,6 +510,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
   <!-- End Google Map -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/translate.js') }}"></script>
 
 </body>
 
