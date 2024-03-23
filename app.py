@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from firebase_admin import credentials, firestore, initialize_app
 import set
 
+#test
 
 from flask_login import (
     UserMixin,
