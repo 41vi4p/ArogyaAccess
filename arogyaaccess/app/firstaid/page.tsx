@@ -126,7 +126,7 @@ export default function FirstAidPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-cyan-50 py-12">
+    <div className="min-h-screen bg-gray-900 py-12 pt-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -135,25 +135,25 @@ export default function FirstAidPage() {
               <Heart className="h-12 w-12 text-white" />
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             First Aid Emergency Guide
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Quick reference for common medical emergencies. Always call emergency services for serious
             situations.
           </p>
         </div>
 
         {/* Emergency Notice */}
-        <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6 mb-12">
+        <div className="bg-red-900 border-2 border-red-700 rounded-xl p-6 mb-12">
           <div className="flex items-start space-x-3">
-            <AlertTriangle className="h-6 w-6 text-red-600 flex-shrink-0 mt-1" />
+            <AlertTriangle className="h-6 w-6 text-red-400 flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lg font-bold text-red-900 mb-2">Emergency Numbers</h3>
-              <p className="text-red-800 mb-2">
+              <h3 className="text-lg font-bold text-red-100 mb-2">Emergency Numbers</h3>
+              <p className="text-red-200 mb-2">
                 In case of emergency, call your local emergency services immediately:
               </p>
-              <ul className="list-disc list-inside text-red-800 space-y-1">
+              <ul className="list-disc list-inside text-red-200 space-y-1">
                 <li>India: 112 (Emergency) / 108 (Ambulance)</li>
                 <li>Fire: 101</li>
                 <li>Police: 100</li>
@@ -169,7 +169,7 @@ export default function FirstAidPage() {
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition"
+                className="bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition"
               >
                 <div className={`bg-gradient-to-br ${emergency.color} text-white p-6`}>
                   <div className="flex items-center space-x-3">
@@ -181,10 +181,10 @@ export default function FirstAidPage() {
                   <ol className="space-y-3">
                     {emergency.steps.map((step, stepIndex) => (
                       <li key={stepIndex} className="flex items-start space-x-3">
-                        <span className="flex-shrink-0 w-6 h-6 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-sm font-semibold">
+                        <span className="flex-shrink-0 w-6 h-6 bg-cyan-900 text-cyan-400 rounded-full flex items-center justify-center text-sm font-semibold">
                           {stepIndex + 1}
                         </span>
-                        <span className="text-gray-700 flex-1">{step}</span>
+                        <span className="text-gray-300 flex-1">{step}</span>
                       </li>
                     ))}
                   </ol>
@@ -195,29 +195,29 @@ export default function FirstAidPage() {
         </div>
 
         {/* Important Notes */}
-        <div className="mt-12 bg-yellow-50 border border-yellow-200 rounded-xl p-6">
-          <h3 className="text-xl font-bold text-yellow-900 mb-3">Important Notes:</h3>
-          <ul className="space-y-2 text-yellow-800">
+        <div className="mt-12 bg-yellow-900 border border-yellow-700 rounded-xl p-6">
+          <h3 className="text-xl font-bold text-yellow-100 mb-3">Important Notes:</h3>
+          <ul className="space-y-2 text-yellow-200">
             <li className="flex items-start space-x-2">
-              <span className="text-yellow-600 font-bold">•</span>
+              <span className="text-yellow-400 font-bold">•</span>
               <span>Always call emergency services first in life-threatening situations</span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-yellow-600 font-bold">•</span>
+              <span className="text-yellow-400 font-bold">•</span>
               <span>Stay calm and assess the situation before acting</span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-yellow-600 font-bold">•</span>
+              <span className="text-yellow-400 font-bold">•</span>
               <span>Ensure your own safety before helping others</span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-yellow-600 font-bold">•</span>
+              <span className="text-yellow-400 font-bold">•</span>
               <span>
                 This guide is for reference only - proper first aid training is recommended
               </span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-yellow-600 font-bold">•</span>
+              <span className="text-yellow-400 font-bold">•</span>
               <span>Always seek professional medical attention for serious injuries</span>
             </li>
           </ul>

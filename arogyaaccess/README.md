@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ArogyaAccess - Next.js PWA
+
+A modern, responsive Progressive Web App (PWA) for rural healthcare accessibility built with Next.js, Firebase, and Gemini AI.
+
+## Features
+
+- **Modern UI/UX**: Built with Next.js 14, TypeScript, and Tailwind CSS
+- **Progressive Web App**: Installable on mobile and desktop devices
+- **Firebase Authentication**: Secure user authentication and session management
+- **Gemini AI Chatbot**: AI-powered medical assistant for instant health guidance
+- **First Aid Guide**: Comprehensive emergency procedures and medical information
+- **Responsive Design**: Mobile-first design that works on all devices
+- **Offline Support**: PWA capabilities for low-connectivity areas
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ and npm
+- Firebase project with Authentication and Firestore enabled
+- Google Gemini AI API key
+
+### Installation
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Configure environment variables:
+
+Create a `.env.local` file in the root directory with your credentials:
+
+```env
+# Firebase Configuration
+NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
+
+# Gemini AI Configuration
+NEXT_PUBLIC_GEMINI_API_KEY=your-gemini-api-key
+```
+
+### Running the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **Firebase** - Authentication and database
+- **Gemini AI** - AI chatbot functionality
+- **next-pwa** - PWA support for Next.js
+- **Lucide React** - Icon library
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Made with ❤️ by Team CodeBreakers for connecting rural patients with healthcare professionals.
