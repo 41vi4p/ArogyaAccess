@@ -1,263 +1,161 @@
-# 🏥 ArogyaAccess - Rural Healthcare Platform
+# ArogyaAccess - Next.js PWA
 
-**"Enhancing healthcare accessibility, regardless of geographic barriers."**
+## Version 2.4
 
-ArogyaAccess is a comprehensive telehealth platform designed to bridge the healthcare gap between rural patients and urban medical professionals. Built by Team CodeBreakers for hackathon competition, this platform addresses unique challenges faced by rural communities including fragile trust, language barriers, patchy connectivity, and disjointed infrastructure.
+A modern, responsive Progressive Web App (PWA) for rural healthcare accessibility built with Next.js, Firebase, and Gemini AI.
 
-## 🌟 Features
+## Features
 
-### 🔐 User Authentication & Management
-- Secure user registration and login system using Firebase Authentication
-- Email verification for account security
-- Session management with Flask-Login
-- Role-based access control
+### Core Features
+- **Modern UI/UX**: Built with Next.js 16, TypeScript, and Tailwind CSS
+- **Progressive Web App**: Installable on mobile and desktop devices
+- **Dark Theme**: Consistent dark mode throughout the application
+- **Firebase Authentication**: Secure user authentication with Google Sign-In and email/password
+- **Gemini AI Chatbot**: AI-powered medical assistant (Gemini Pro) for instant health guidance
+- **First Aid Guide**: Comprehensive emergency procedures and medical information
+- **Responsive Design**: Mobile-first design that works on all devices
+- **Offline Support**: PWA capabilities for low-connectivity areas
 
-### 🤖 AI-Powered Medical Chatbot
-- Interactive chatbot powered by Google's Gemini AI
-- Medical information and guidance for common health queries
-- Emergency response protocols and first aid guidance
-- Rural-friendly, simple language responses
-- Real-time chat interface with modern UI
+### User Profile Management (v2.4)
+- **Edit Profile**: Update display name and profile picture
+- **Email Management**: Change email with password verification (email/password users)
+- **Password Management**: Change password with current password verification
+- **Account Deletion**: Secure account deletion with authentication
+- **Google Profile Integration**: Automatic profile picture sync for Google users
 
-### 🚨 Emergency First Aid Guide
-- Comprehensive first aid information
-- Step-by-step emergency procedures
-- Offline-capable data for areas with poor connectivity
-- Quick access to critical medical information
+### Activity Logging System (v2.4)
+- **Comprehensive Activity Tracking**: Automatic logging of user actions
+- **Activity Timeline**: View chronological history of all activities
+- **Activity Statistics**: Track login sessions, profile updates, and more
+- **Firestore Integration**: Secure cloud storage of activity logs
+- **Activity Types**: Login, logout, profile updates, password changes, email changes, account creation
 
-### 💬 Doctor-Patient Communication
-- Secure messaging system between patients and healthcare professionals
-- Appointment scheduling and management
-- Medical history tracking
-- Prescription and treatment plan sharing
+### Enhanced Navigation (v2.4)
+- **Profile Dropdown**: Quick access to profile settings and account options
+- **Google Profile Pictures**: Display user's Google profile picture in header
+- **Mobile Responsive**: Optimized profile menu for mobile devices
 
-### 🌐 Responsive Design
-- Mobile-first responsive design
-- Works across all device types
-- Optimized for low-bandwidth connections
-- Intuitive user interface for all technical skill levels
+## Getting Started
 
-## 🛠️ Tech Stack
+### Prerequisites
 
-### Backend
-- **Flask** - Python web framework
-- **Firebase** - Authentication and real-time database
-- **Google Gemini AI** - Chatbot functionality
-- **Flask-Login** - User session management
-- **Flask-WTF** - Form handling and validation
-- **Flask-Bcrypt** - Password hashing
-
-### Frontend
-- **HTML5/CSS3** - Structure and styling
-- **JavaScript** - Interactive functionality
-- **Bootstrap** - Responsive design framework
-- **Font Awesome** - Icon library
-
-### Database
-- **Firebase Firestore** - NoSQL cloud database
-- **Firebase Realtime Database** - Real-time data synchronization
-
-## 📋 Prerequisites
-
-Before running the application, ensure you have:
-
-- Python 3.7+ installed
-- Node.js and npm (for frontend dependencies)
-- Firebase project set up
+- Node.js 18+ and npm
+- Firebase project with Authentication and Firestore enabled
 - Google Gemini AI API key
 
-## 🚀 Installation & Setup
+### Installation
 
-### 1. Clone the Repository
+1. Install dependencies:
 ```bash
-git clone https://github.com/your-username/ArogyaAccess.git
-cd ArogyaAccess
+npm install
 ```
 
-### 2. Set Up Virtual Environment
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+2. Configure environment variables:
 
-### 3. Install Dependencies
-```bash
-pip install -r requirements.txt
-npm install  # If you have frontend dependencies
-```
+Create a `.env.local` file in the root directory with your credentials:
 
-### 4. Configure Environment Variables
-1. Copy `.env.example` to `.env`:
-```bash
-cp .env.example .env
-```
-
-2. Fill in your configuration values in `.env`:
 ```env
-SECRET_KEY=your-super-secret-key-here
-GEMINI_API_KEY=your-gemini-api-key-here
-# Add other required variables
+# Firebase Configuration
+NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
+
+# Gemini AI Configuration
+NEXT_PUBLIC_GEMINI_API_KEY=your-gemini-api-key
 ```
 
-### 5. Configure Firebase
-1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
-2. Enable Authentication and Firestore
-3. Download your service account key as `key2.json`
-4. Update `set.py` with your Firebase configuration:
-
-```python
-config = {
-    "apiKey": "your-api-key",
-    "authDomain": "your-project.firebaseapp.com",
-    "databaseURL": "https://your-project-rtdb.firebaseio.com/",
-    "projectId": "your-project-id",
-    "storageBucket": "your-project.appspot.com",
-    "messagingSenderId": "your-sender-id",
-    "appId": "your-app-id"
-}
-```
-
-### 6. Run the Application
-```bash
-python routes.py
-```
-
-The application will be available at `http://localhost:5000`
-
-## 📁 Project Structure
-
-```
-ArogyaAccess/
-├── templates/          # HTML templates
-│   ├── base.html      # Base template
-│   ├── index.html     # Homepage
-│   ├── login.html     # Login page
-│   ├── auth.html      # Registration page
-│   ├── dashboard.html # User dashboard
-│   ├── chatbot.html   # AI chatbot interface
-│   ├── firstaid.html  # First aid guide
-│   └── ...
-├── static/            # Static files (CSS, JS, images)
-│   ├── styles/       # CSS files
-│   ├── js/           # JavaScript files
-│   └── images/       # Image assets
-├── app.py            # Flask app configuration
-├── routes.py         # Application routes and logic
-├── models.py         # Database models
-├── forms.py          # WTForms form definitions
-├── set.py            # Configuration settings
-├── requirements.txt  # Python dependencies
-├── vercel.json       # Vercel deployment config
-└── README.md         # This file
-```
-
-## 🎯 Core Features Explanation
-
-### Authentication System
-- Users register with email verification
-- Firebase handles secure authentication
-- Session management ensures user security
-- Password hashing with bcrypt
-
-### AI Chatbot
-- Powered by Google's Gemini AI
-- Specialized medical knowledge base
-- Contextual responses for rural healthcare
-- Safety guidelines and emergency protocols
-
-### Emergency Features
-- First aid procedures with step-by-step guides
-- Emergency contact information
-- Offline-capable content for connectivity issues
-- Quick access to critical information
-
-## 🌐 Deployment
-
-### Vercel Deployment
-The project includes `vercel.json` configuration for easy deployment:
+### Running the Development Server
 
 ```bash
-npm install -g vercel
-vercel --prod
+npm run dev
 ```
 
-### Environment Variables for Production
-Set these environment variables in your deployment platform:
-- `SECRET_KEY`
-- `GEMINI_API_KEY`
-- Firebase configuration variables
-- Database connection strings
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## 🚨 Important Security Notes
+### Building for Production
 
-1. **Never commit sensitive files:**
-   - `key2.json` (Firebase credentials)
-   - `set.py` (API keys and config)
-   - `.env` files
+```bash
+npm run build
+npm start
+```
 
-2. **Configure proper CORS settings** for production
-3. **Use environment variables** for all sensitive data
-4. **Enable Firebase security rules** for database access
-5. **Use HTTPS** in production
+## Technologies Used
 
-## 🤝 Contributing
+- **Next.js 16** - React framework with App Router and Turbopack
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **Firebase** - Authentication and Firestore database
+- **Gemini AI (Gemini Pro)** - AI chatbot functionality
+- **next-pwa** - PWA support for Next.js
+- **Lucide React** - Icon library
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make your changes and test thoroughly
-4. Commit with descriptive messages
-5. Push to your branch: `git push origin feature-name`
-6. Submit a pull request
+## What's New in v2.4
 
-## 📱 API Endpoints
+### Profile Management System
+- Complete profile editing functionality with display name and photo URL support
+- Secure email change with password verification for email/password users
+- Password change functionality with current password verification
+- Account deletion with proper authentication (password for email users, confirmation for Google users)
+- Automatic Google profile picture integration and sync
 
-### Authentication
-- `POST /login` - User login
-- `POST /register` - User registration
-- `GET /logout` - User logout
+### Activity Logging & Monitoring
+- New activity logging system with Firestore integration
+- Comprehensive activity tracking (login, logout, profile updates, password changes, etc.)
+- Activity logs page with timeline view and statistics dashboard
+- Activity filtering and categorization with color-coded icons
+- Relative timestamps for better user experience
 
-### Main Routes
-- `GET /` - Homepage
-- `GET /dashboard` - User dashboard (login required)
-- `GET /chatbot` - AI chatbot interface (login required)
-- `GET /firstaid` - First aid guide
-- `GET /about` - About page
+### UI/UX Improvements
+- Enhanced header with profile dropdown menu
+- Google profile picture display in navigation
+- Mobile-responsive profile menu with full functionality
+- Dashboard improvements with display name support
+- Emoji icons for better visual consistency
+- Dark theme enhancements across all pages
 
-### API Routes
-- `POST /api/chat` - Chat with AI assistant (login required)
+### Technical Improvements
+- Upgraded to Next.js 16.0.0 with Turbopack
+- TypeScript build error fixes
+- Improved authentication context with profile update functions
+- Better error handling and user feedback
+- Production build optimization
 
-## 🎥 Demo Videos
+## Project Structure
 
-- **Presentation**: [PowerPoint Presentation](https://youtu.be/EWUAah_7XiQ)
-- **Website Preview**: [Live Demo](https://youtu.be/aCQ8LU9zKH4)
+```
+arogyaaccess/
+├── app/                    # Next.js App Router pages
+│   ├── about/             # About page
+│   ├── chatbot/           # AI chatbot interface
+│   ├── dashboard/         # User dashboard
+│   ├── firstaid/          # First aid guide
+│   ├── login/             # Login page
+│   ├── logs/              # Activity logs page (v2.4)
+│   ├── profile/edit/      # Profile editing page (v2.4)
+│   └── register/          # Registration page
+├── components/            # React components
+│   ├── Header.tsx         # Enhanced navigation header (v2.4)
+│   └── ThemeProvider.tsx  # Dark theme provider
+├── context/               # React context providers
+│   └── AuthContext.tsx    # Enhanced authentication context (v2.4)
+├── lib/                   # Utility functions
+│   ├── activityLog.ts     # Activity logging utilities (v2.4)
+│   ├── firebase.ts        # Firebase configuration
+│   └── gemini.ts          # Gemini AI integration
+└── public/                # Static assets
+```
 
-## 👥 Team CodeBreakers
+## API Routes & Integrations
 
-This project was developed by Team CodeBreakers as part of a hackathon to address healthcare accessibility challenges in rural areas.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support & Issues
-
-If you encounter any issues or need support:
-
-1. Check the [Issues](https://github.com/your-username/ArogyaAccess/issues) section
-2. Create a new issue with detailed description
-3. Include error messages and steps to reproduce
-
-## 🔮 Future Enhancements
-
-- [ ] Multi-language support for regional languages
-- [ ] Voice-to-text functionality for patients with reading difficulties
-- [ ] Integration with wearable devices
-- [ ] Telemedicine video calling
-- [ ] Prescription management system
-- [ ] Health record digitization
-- [ ] SMS-based notifications for low-connectivity areas
-- [ ] Integration with government health schemes
+- **Firebase Authentication**: Google OAuth and email/password authentication
+- **Firestore Database**: User data and activity logs storage
+- **Gemini AI API**: Medical chatbot powered by Gemini Pro model
 
 ---
 
-**Made with ❤️ by Team CodeBreakers for connecting rural patients with healthcare professionals.**
+Made with ❤️ by Team CodeBreakers for connecting rural patients with healthcare professionals.
+
+**Version 2.4** - December 2024
