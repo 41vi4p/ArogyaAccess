@@ -68,23 +68,23 @@ export default function ChatbotPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-cyan-50 dark:from-gray-900 dark:to-black transition-colors">
+    <div className="min-h-screen bg-gray-900 pt-20">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
-        <div className="bg-white dark:bg-gray-800 rounded-t-2xl shadow-lg p-6 border-b dark:border-gray-700">
+        <div className="bg-gray-800 rounded-t-2xl shadow-lg p-6 border-b border-gray-700">
           <div className="flex items-center space-x-3">
             <div className="bg-gradient-to-br from-cyan-500 to-blue-600 p-3 rounded-lg">
               <Bot className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">AI Medical Assistant</h1>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Powered by Gemini AI</p>
+              <h1 className="text-2xl font-bold text-white">AI Medical Assistant</h1>
+              <p className="text-sm text-gray-400">Powered by Gemini AI</p>
             </div>
           </div>
         </div>
 
         {/* Chat Messages */}
-        <div className="bg-white dark:bg-gray-800 shadow-lg p-6 h-[500px] overflow-y-auto">
+        <div className="bg-gray-800 shadow-lg p-6 h-[500px] overflow-y-auto">
           <div className="space-y-4">
             {messages.map((message, index) => (
               <div
@@ -113,7 +113,7 @@ export default function ChatbotPage() {
                     className={`px-4 py-3 rounded-lg ${
                       message.role === 'user'
                         ? 'bg-cyan-500 text-white'
-                        : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                        : 'bg-gray-700 text-white'
                     }`}
                   >
                     <p className="text-sm whitespace-pre-wrap">{message.content}</p>
@@ -127,7 +127,7 @@ export default function ChatbotPage() {
                   <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-gradient-to-br from-cyan-500 to-blue-600">
                     <Bot className="h-5 w-5 text-white" />
                   </div>
-                  <div className="px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700">
+                  <div className="px-4 py-3 rounded-lg bg-gray-700">
                     <div className="flex space-x-2">
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                       <div
@@ -150,14 +150,14 @@ export default function ChatbotPage() {
         {/* Input Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-white dark:bg-gray-800 rounded-b-2xl shadow-lg p-4 border-t dark:border-gray-700 flex items-center space-x-2"
+          className="bg-gray-800 rounded-b-2xl shadow-lg p-4 border-t border-gray-700 flex items-center space-x-2"
         >
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your medical question here..."
-            className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"
+            className="flex-1 px-4 py-3 border border-gray-600 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"
             disabled={loading}
           />
           <button
@@ -170,9 +170,9 @@ export default function ChatbotPage() {
         </form>
 
         {/* Disclaimer */}
-        <div className="mt-4 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <p className="text-sm text-yellow-800">
-            <strong>Disclaimer:</strong> This AI assistant provides general medical information only.
+        <div className="mt-4 bg-yellow-900 border border-yellow-700 rounded-lg p-4">
+          <p className="text-sm text-yellow-200">
+            <strong className="text-yellow-100">Disclaimer:</strong> This AI assistant provides general medical information only.
             Always consult with a qualified healthcare professional for diagnosis and treatment.
             In case of emergency, call your local emergency services immediately.
           </p>

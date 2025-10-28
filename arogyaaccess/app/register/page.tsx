@@ -63,30 +63,30 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl shadow-xl">
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 bg-gray-800 p-8 rounded-2xl shadow-xl">
         {/* Logo and Title */}
         <div className="text-center">
           <div className="flex justify-center">
-            <Heart className="h-12 w-12 text-cyan-500" />
+            <Heart className="h-12 w-12 text-cyan-400" />
           </div>
-          <h2 className="mt-4 text-3xl font-extrabold text-gray-900">Create Account</h2>
-          <p className="mt-2 text-sm text-gray-600">Join ArogyaAccess today</p>
+          <h2 className="mt-4 text-3xl font-extrabold text-white">Create Account</h2>
+          <p className="mt-2 text-sm text-gray-400">Join ArogyaAccess today</p>
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center space-x-2">
-            <AlertCircle className="h-5 w-5 text-red-500" />
-            <p className="text-sm text-red-700">{error}</p>
+          <div className="bg-red-900 border border-red-700 rounded-lg p-4 flex items-center space-x-2">
+            <AlertCircle className="h-5 w-5 text-red-400" />
+            <p className="text-sm text-red-200">{error}</p>
           </div>
         )}
 
         {/* Success Message */}
         {success && (
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center space-x-2">
-            <CheckCircle className="h-5 w-5 text-green-500" />
-            <p className="text-sm text-green-700">
+          <div className="bg-green-900 border border-green-700 rounded-lg p-4 flex items-center space-x-2">
+            <CheckCircle className="h-5 w-5 text-green-400" />
+            <p className="text-sm text-green-200">
               Account created! Verification email sent. Redirecting...
             </p>
           </div>
@@ -97,11 +97,11 @@ export default function RegisterPage() {
           <div className="space-y-4">
             {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
                 <input
                   id="email"
                   name="email"
@@ -110,7 +110,7 @@ export default function RegisterPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"
+                  className="pl-10 w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition text-white placeholder-gray-400"
                   placeholder="Enter your email"
                 />
               </div>
@@ -118,11 +118,11 @@ export default function RegisterPage() {
 
             {/* Password Input */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-1">
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
                 <input
                   id="password"
                   name="password"
@@ -131,7 +131,7 @@ export default function RegisterPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"
+                  className="pl-10 w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition text-white placeholder-gray-400"
                   placeholder="Create a password"
                 />
               </div>
@@ -141,12 +141,12 @@ export default function RegisterPage() {
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-300 mb-1"
               >
                 Confirm Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
                 <input
                   id="confirmPassword"
                   name="confirmPassword"
@@ -155,7 +155,7 @@ export default function RegisterPage() {
                   required
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"
+                  className="pl-10 w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition text-white placeholder-gray-400"
                   placeholder="Confirm your password"
                 />
               </div>
@@ -174,10 +174,10 @@ export default function RegisterPage() {
           {/* Divider */}
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
+              <div className="w-full border-t border-gray-600"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Or continue with</span>
+              <span className="px-2 bg-gray-800 text-gray-400">Or continue with</span>
             </div>
           </div>
 
@@ -186,7 +186,7 @@ export default function RegisterPage() {
             type="button"
             onClick={handleGoogleSignup}
             disabled={loading || success}
-            className="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-300 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+            className="w-full flex items-center justify-center gap-3 bg-gray-700 border-2 border-gray-600 text-white py-3 px-4 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition disabled:opacity-50 disabled:cursor-not-allowed font-medium"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
@@ -211,9 +211,9 @@ export default function RegisterPage() {
 
           {/* Login Link */}
           <div className="text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-400">
               Already have an account?{' '}
-              <Link href="/login" className="font-medium text-cyan-500 hover:text-cyan-600">
+              <Link href="/login" className="font-medium text-cyan-400 hover:text-cyan-300">
                 Login here
               </Link>
             </p>
